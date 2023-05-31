@@ -31,14 +31,14 @@ import java.util.Objects;
 public class Laptop {
     private String brand;
     private String model;
-    public String OS;
-    public int RAM;
-    public int SSD;
-    public String color;
+    private String OS;
+    private String RAM;
+    private String SSD;
+    private String color;
 
     // Конструктор класса
     public Laptop(String brand, String model, String OS,
-                   int RAM, int SSD, String color) {
+                   String RAM, String SSD, String color) {
 
         this.brand = brand;
         this.model = model;
@@ -73,20 +73,20 @@ public class Laptop {
     }
 
 
-    public int getRAM() {
+    public String getRAM() {
         return RAM;
     }
 
-    public void setRAM(int RAM) {
+    public void setRAM(String RAM) {
         this.RAM = RAM;
     }
 
-    public int getSSD() {
+    public String getSSD() {
         return SSD;
     }
 
-    public void setSSD(int SSD) {
-        this.SSD = SSD;
+    public void setSSD(String videoModel) {
+        this.SSD = videoModel;
     }
 
     public String getColor() {
@@ -95,10 +95,6 @@ public class Laptop {
 
     public void setColor(String color) {
         this.color = color;
-    }
-
-    public void getInfo() {
-        System.out.println(this.model + ":\n\tЦвет: " + this.color + "\n\tОЗУ: " + this.RAM + "\n\tОбъем ЖД: " + this.SSD + "\n\tОперационная система: " + this.OS + "\n");
     }
 
     @Override
