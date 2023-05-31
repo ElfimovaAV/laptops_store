@@ -2,17 +2,22 @@ package laptopshop;
 
 import laptopshop.classes.Laptop;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
         String selectedType;
-
+        String parameterNumber;
         Scanner scanner = new Scanner(System.in);
 
         Laptop laptop = new Laptop("MacBook Air", "M2 Entry", "Apple macOS 12 Monterey", "8", "256", "Silver");
-        Laptop laptop1 = new Laptop("MacBook Air", "M2 Entry", "Apple macOS 12 Monterey", "16", "1024", "Black");
+        Laptop laptop1 = new Laptop("MacBook Air", "M2 Entry","Apple macOS 12 Monterey", "16", "1024", "Black");
         Laptop laptop2 = new Laptop("MacBook Pro", "13", "Apple macOS 12 Monterey", "8", "256", "White");
         Laptop laptop3 = new Laptop("MacBook Pro", "13", "Apple macOS 12 Monterey", "16", "1024", "Gray");
         Laptop laptop4 = new Laptop("Asus Zenbook", "S 13 OLED", "Microsoft Windows 11 Home", "16", "1024", "Gray");
@@ -39,16 +44,14 @@ public class Main {
         laptopsMap.put(11, laptop10);
         laptopsMap.put(12, laptop11);
 
-        /*while (true) {*/
-        System.out.print("\nEnter the number of one or more parameters separated by a space:" +
-                "\n1. Brand; 2. Model; 3. OS; 4. RAM; 5. SSD; 6. Color");
-        System.out.print("\nPrint number of the parameter from 1 to 6 or input 0 for exit: ");
+        while (true) {
+            System.out.print("\nYou can choose a parameter: 1. Brand; 2. Model; 3. OS; 4. RAM; 5. SSD; 6. Color");
+            System.out.print("\nPrint number of the parameter from 1 to 6 or input 0 for exit: ");
 
-        List<String> parameters = Arrays.asList(scanner.nextLine().split(" "));
-        System.out.println(Arrays.toString(parameters.toArray()));
+            parameterNumber = scanner.nextLine();
+            System.out.println(parameterNumber);
 
-
-            /*if (parameterNumber.equals("0")) {
+            if (parameterNumber.equals("0")) {
                 System.out.println("Come again!");
                 break;
             }
@@ -185,6 +188,6 @@ public class Main {
         return laptopsMap.keySet().stream()
                 .map(key -> laptopsMap.get(key).getSSD())
                 .collect(Collectors.toSet());
-    }*/
     }
+
 }
