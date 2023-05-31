@@ -11,10 +11,6 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-    }
-
-    public static ArrayList<Laptop> getLaptopList() {
-        ArrayList<Laptop> laptopArrayList = new ArrayList<>();
         Laptop laptop = new Laptop("MacBook Air", "M2 Entry", "Apple macOS 12 Monterey", "8", "256", "Silver");
         Laptop laptop1 = new Laptop("MacBook Air", "M2 Entry", "Apple macOS 12 Monterey", "16", "1024", "Black");
         Laptop laptop2 = new Laptop("MacBook Pro", "13", "Apple macOS 12 Monterey", "8", "256", "White");
@@ -28,23 +24,22 @@ public class Main {
         Laptop laptop10 = new Laptop("Dell XPS", "13 9310 OLED", "Microsoft Windows 10 Home 64 Bit", "16", "512", "White");
         Laptop laptop11 = new Laptop("Dell XPS", "13 9310 OLED", "Microsoft Windows 10 Home 64 Bit", "16", "1024", "Silver");
 
-        laptopArrayList.add(laptop);
-        laptopArrayList.add(laptop1);
-        laptopArrayList.add(laptop2);
-        laptopArrayList.add(laptop3);
-        laptopArrayList.add(laptop4);
-        laptopArrayList.add(laptop5);
-        laptopArrayList.add(laptop6);
-        laptopArrayList.add(laptop7);
-        laptopArrayList.add(laptop8);
-        laptopArrayList.add(laptop9);
-        laptopArrayList.add(laptop10);
-        laptopArrayList.add(laptop11);
+        Map<Integer, Laptop> laptopsMap = new HashMap<Integer, Laptop>();
 
-        return laptopArrayList;
+        laptopsMap.put(1, laptop);
+        laptopsMap.put(2, laptop1);
+        laptopsMap.put(3, laptop2);
+        laptopsMap.put(4, laptop3);
+        laptopsMap.put(5, laptop4);
+        laptopsMap.put(6, laptop5);
+        laptopsMap.put(7, laptop6);
+        laptopsMap.put(8, laptop7);
+        laptopsMap.put(9, laptop8);
+        laptopsMap.put(10, laptop9);
+        laptopsMap.put(11, laptop10);
+        laptopsMap.put(12, laptop11);
 
-
-       /* while (true) {
+        /*while (true) {*/
         System.out.print("\nEnter the number of one or more parameters separated by a space:" +
                 "\n1. Brand; 2. Model; 3. OS; 4. RAM; 5. SSD; 6. Color");
         System.out.print("\nPrint number of the parameter from 1 to 6 or input 0 for exit: ");
@@ -52,58 +47,57 @@ public class Main {
         List<String> parameters = Arrays.asList(scanner.nextLine().split(" "));
         System.out.println(Arrays.toString(parameters.toArray()));
 
-            for(int i=0;i<parameters.size();i++){
 
-                if (parameters.get(i).equals("0")) {
-                    System.out.println("Come again!");
-                    break;
-                    }
-
-                switch (parameters.get(i)) {
-                    case "1":
-                        getBrand(laptopsMap).forEach(System.out::println);
-                        System.out.println("\nChoose and print brand: ");
-                        selectedType = scanner.nextLine();
-                        outLaptop((filterBrands(laptopsMap, selectedType)));
-                        break;
-
-                    case "2":
-                        getModels(laptopsMap).forEach(System.out::println);
-                        System.out.print("\nChoose and print model: ");
-                        selectedType = scanner.nextLine();
-                        outLaptop((filterModels(laptopsMap, selectedType)));
-                        break;
-
-                    case "3":
-                        getOS(laptopsMap).forEach(System.out::println);
-                        System.out.print("\nChoose and print OS: ");
-                        selectedType = scanner.nextLine();
-                        outLaptop((filterOS(laptopsMap, selectedType)));
-                    case "4":
-                        getRAM(laptopsMap).forEach(System.out::println);
-                        System.out.print("\nChoose and print RAM: ");
-                        selectedType = scanner.nextLine();
-                        outLaptop((filterRAM(laptopsMap, selectedType)));
-                        break;
-                    case "5":
-                        getVideoModels(laptopsMap).forEach(System.out::println);
-                        System.out.print("\nChoose and print SSD: ");
-                        selectedType = scanner.nextLine();
-                        outLaptop((filterSSD(laptopsMap, selectedType)));
-                        break;
-                    case "6":
-                        getColors(laptopsMap).forEach(System.out::println);
-                        System.out.println("\nChoose and print color: ");
-                        selectedType = scanner.nextLine();
-                        outLaptop((filterByColor(laptopsMap, selectedType)));
-                        break;
-                    default:
-                        break;
-                }
+            /*if (parameterNumber.equals("0")) {
+                System.out.println("Come again!");
+                break;
             }
-            scanner.close();
 
+            switch (parameterNumber) {
+                case "1":
+                    getBrand(laptopsMap).forEach(System.out::println);
+                    System.out.println("\nChoose and print brand: ");
+                    selectedType = scanner.nextLine();
+                    outLaptop((filterBrands(laptopsMap, selectedType)));
+                    break;
+
+                case "2":
+                    getModels(laptopsMap).forEach(System.out::println);
+                    System.out.print("\nChoose and print model: ");
+                    selectedType = scanner.nextLine();
+                    outLaptop((filterModels(laptopsMap, selectedType)));
+                    break;
+
+                case "3":
+                    getOS(laptopsMap).forEach(System.out::println);
+                    System.out.print("\nChoose and print OS: ");
+                    selectedType = scanner.nextLine();
+                    outLaptop((filterOS(laptopsMap, selectedType)));
+                case "4":
+                    getRAM(laptopsMap).forEach(System.out::println);
+                    System.out.print("\nChoose and print RAM: ");
+                    selectedType = scanner.nextLine();
+                    outLaptop((filterRAM(laptopsMap, selectedType)));
+                    break;
+                case "5":
+                    getVideoModels(laptopsMap).forEach(System.out::println);
+                    System.out.print("\nChoose and print SSD: ");
+                    selectedType = scanner.nextLine();
+                    outLaptop((filterSSD(laptopsMap, selectedType)));
+                    break;
+                case "6":
+                    getColors(laptopsMap).forEach(System.out::println);
+                    System.out.println("\nChoose and print color: ");
+                    selectedType = scanner.nextLine();
+                    outLaptop((filterByColor(laptopsMap, selectedType)));
+                    break;
+                default:
+                    break;
+            }
         }
+        scanner.close();
+
+    }
 
     public static Collection<Laptop> filterBrands(Map<Integer, Laptop> laptopsMap, String brand) {
         return laptopsMap.values().stream()
@@ -190,7 +184,7 @@ public class Main {
     public static Set<String> getVideoModels(Map<Integer, Laptop> laptopsMap) {
         return laptopsMap.keySet().stream()
                 .map(key -> laptopsMap.get(key).getSSD())
-                .collect(Collectors.toSet());*/
+                .collect(Collectors.toSet());
+    }*/
     }
-
 }
