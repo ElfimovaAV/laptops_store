@@ -2,17 +2,13 @@ package laptopshop;
 
 import laptopshop.classes.Laptop;
 
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import static laptopshop.classes.Methods.*;
 
-public class Main {
+public class Program {
     public static void main(String[] args) {
         String selectedType;
         String parameterNumber;
